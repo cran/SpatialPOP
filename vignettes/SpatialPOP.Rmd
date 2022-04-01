@@ -1,0 +1,86 @@
+---
+title: "SpatialPOP: package for generation of spatial data along with spatial coordinates and spatially varying model parameters"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{SpatialPOP: package for generation of spatial data along with spatial coordinates and spatially varying model parameters}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+## Introduction
+****<br/>
+*In this R package, a spatial dataset can be generated under the assumption that observations are collected from a two dimensional uniform grid consists of (m^2^) lattice points having unit distance between any two neighbouring points along the horizontal and vertical directions.*
+
+****<br/>
+
+### **Generation of simulated dataset based on spatially varying regression model**
+****<br/>
+
+**generation of spatial coordinates of locations**
+
+*The size of the population is N= m^2^. The spatial coordinates of the locations of observations can be computed by the following expressions*
+
+
+*( Latitude~i~, Longitude~i~ )= ( mod(i-1,m), [(i-1)/m] ), i= 1,..., m^2^*
+
+*where, mod(i-1,m) is the remainder of (i-1) divided by  m and  [(i-1)/m]  is the integer part of the number (i-1)/m *
+
+
+
+**generation of auxiliary variable from uniform distribution**
+
+
+
+X =runif(N,0,1)
+
+**error term drawn independently from normal distribution i.e. N(0,1)**
+
+
+
+e =rnorm(N, mean=0, sd=1)
+
+
+**generation of spatially varying regression coefficients**
+
+
+
+B~0~=(Latitude~i~+Longitude~i~)/6
+
+B~1~=(Latitude~i~/3)
+
+**spatially varying regression model for generating the response variable**
+
+
+
+Y~i~ = B~0~( Latitude~i~,Longitude~i~ ) + B~1~( Latitude~i~,Longitude~i~ )*X~i~ + e~i~     ; i= 1,..., N
+
+``` {r}
+# Examples: generate an uniform two dimensional grid of lattice points 
+
+library(SpatialPOP)
+coord_grid=spatial_grid(c(1:5),c(1:5))
+coord_grid=as.data.frame(coord_grid)
+names(coord_grid)=cbind("x","y")
+coord_grid
+plot(coord_grid)
+
+# Examples: simulated data along with spatial coordinates and spatially varying model parameters
+
+library(SpatialPOP)
+
+coord_grid=spatial_grid(c(1:5),c(1:5))
+coord_grid=as.data.frame(coord_grid)
+names(coord_grid)=cbind("x","y")
+coord_grid
+N<-nrow(coord_grid)
+N
+m<-sqrt(nrow(coord_grid))
+m
+
+
+spatial_data<-spatialPOP(25,5,c(1:5),c(1:5))
+spatial_data
+```
+
+
+

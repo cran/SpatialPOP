@@ -1,0 +1,11 @@
+0bc25368f97094ecb0ac768ce47f4f9d *DESCRIPTION
+7bf2fd58e55d01013c72931dc3923237 *NAMESPACE
+9b4b27228171ca274249361d8b7ad32f *R/spatial_POP.R
+85c15605e096c36dbad7eabe7b2f1caf *R/spatial_grid.R
+aafb3ac5235e22f9e1f8df92c081746e *build/vignette.rds
+4fea7b621f7ac75db3c7b30fb1fde683 *inst/doc/SpatialPOP.R
+a7e3aead25994cf72a3728c367ce6fc4 *inst/doc/SpatialPOP.Rmd
+490066ec87dedb44cc128e080150ea28 *inst/doc/SpatialPOP.html
+834d9c7424193dff6ba160e748890520 *man/spatialPOP.Rd
+dac7be01b332c5e4e5442895896e42a5 *man/spatial_grid.Rd
+a7e3aead25994cf72a3728c367ce6fc4 *vignettes/SpatialPOP.Rmd
